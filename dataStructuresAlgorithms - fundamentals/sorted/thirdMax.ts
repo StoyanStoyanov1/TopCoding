@@ -1,12 +1,12 @@
 function thirdMax(nums: number[]): number {
-    const sortedNums: number[] = customFilter(nums);
+    const sortedNums: number[] = customSort(nums);
 
     if (sortedNums.length < 3) return nums[0];
 
     return nums[2];
 };
 
-function customFilter (nums: number[]): number[] {
+function customSort (nums: number[]): number[] {
     while (true) {
         let hasBeenChanged: boolean = false;
         for (let i = 0; i < nums.length; i++) {
