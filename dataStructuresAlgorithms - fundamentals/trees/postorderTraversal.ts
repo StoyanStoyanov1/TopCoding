@@ -6,17 +6,13 @@ interface TreeNode {
 
 type TreeNodeType = TreeNode | null;
 
-function postorderTraversal(root: TreeNodeType): number[] {
-  if (!root) return [];
+var postorderTraversal = function(root: TreeNodeType, arr: number[] = []) {
+    if (!root) return arr;
 
-  return getPostorderTraversal(root, []);
-}
+    if (root.left) postorderTraversal(root.left, arr);
+    if (root.right) postorderTraversal(root.right, arr);
 
-function getPostorderTraversal(node: TreeNode, arr: number[]): number[] {
-  if (node.left) getPostorderTraversal(node.left, arr);
-  if (node.right) getPostorderTraversal(node.right, arr);
+    arr.push(root.val);
 
-  arr.push(node.val);
-
-  return arr;
-}
+    return arr;
+};
