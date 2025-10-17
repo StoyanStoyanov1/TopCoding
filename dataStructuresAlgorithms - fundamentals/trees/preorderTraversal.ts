@@ -5,18 +5,12 @@ interface TreeNode {
 }
 
 type TreeNodeType = TreeNode | null;
+var preorderTraversal = function(root: TreeNode, arr: number[] = []) {
+    if (!root) return arr;
+    arr.push(root.val);
 
-function preorderTraversal(root: TreeNodeType): number[] {
-  return getValues(root, []);
-}
+    if (root.left) preorderTraversal(root.left, arr);
+    if (root.right) preorderTraversal(root.right, arr);
 
-function getValues(node: TreeNodeType, arr: number[]): number[] {
-  if (!node) return arr;
-
-  arr.push(node.val);
-
-  if (node.left) getValues(node.left, arr);
-  if (node.right) getValues(node.right, arr);
-
-  return arr;
-}
+    return arr;
+};
