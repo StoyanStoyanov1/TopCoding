@@ -6,22 +6,17 @@ interface TreeNode {
 
 type TreeNodeType = TreeNode | null
 
-function binaryTreePaths(root: TreeNodeType): string[] {
-    const result: string[]= []; 
+var binaryTreePaths = function(root: TreeNodeType, arr: string[] = [], str: string = "") {
+    if (!root) return arr;
 
-    if (!root) return result;
-    
-    getValues(root, [root.val], result)
-    
-    return result;
-};
+    str += str ? `->${String(root.val)}` : String(root.val);
 
-function getValues(root: TreeNode, arr: number[] , result: string[]): void{
     if (!root.left && !root.right) {
-        result.push(arr.join("->"));
-        return;
-    };
+        arr.push(str);
+    }
 
-    if (root.left) getValues(root.left, [...arr, root.left.val], result);
-    if (root.right) getValues(root.right, [...arr, root.right.val], result);
-}
+    if (root.left) binaryTreePaths(root.left, arr, str);
+    if (root.right) binaryTreePaths(root.right, arr, str);
+
+    return arr;
+};
