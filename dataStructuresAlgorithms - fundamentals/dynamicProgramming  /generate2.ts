@@ -1,4 +1,4 @@
-function generate2(rowIndex: number): number[] {
+function triangle2(rowIndex: number): number[] {
     if (rowIndex === 0) return [1];
 
     const triangle: number[][] = [[1], [1, 1]];
