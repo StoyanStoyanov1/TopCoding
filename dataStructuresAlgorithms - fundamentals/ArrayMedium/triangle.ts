@@ -1,0 +1,13 @@
+function minimumTotal(triangle: number[][]): number {
+    const rows: number = triangle.length;
+
+    const dp: number[] = triangle[rows - 1].slice();
+
+    for (let row = rows - 2; row >= 0; row--) {
+        for (let col = 0; col < triangle[row].length; col++) {
+            dp[col] = triangle[row][col] + Math.min(dp[col], dp[col + 1]);
+        }
+    }
+
+    return dp[0];
+}
